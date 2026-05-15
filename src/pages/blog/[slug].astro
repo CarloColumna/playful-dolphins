@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+export async function getStaticPaths() {
+  const posts: CollectionEntry<"blog">[] = await getCollection(
+    "blog",
+    ({ data }: CollectionEntry<"blog">) => !data.draft,
+  );
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as Props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="card container">
+    <h1>{post.data.title}</h1>
+    <p style="color:var(--muted);">{post.data.publishedAt.toISOString().slice(0, 10)}</p>
+    {post.data.externalUrl && (
+      <div style="margin-bottom:1.2rem;">
+        <a class="btn primary" href={post.data.externalUrl} target="_blank" rel="noreferrer">Read full article on Medium &rarr;</a>
+      </div>
+    )}
+    <Content />
+  </article>
+</BaseLayout>

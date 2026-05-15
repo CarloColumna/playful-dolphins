@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout active="cv" title="CV" description="Curriculum vitae">
+  <section class="card container">
+    <div class="section-header">
+      <h1>Curriculum Vitae</h1>
+      <a class="btn primary" href="/cv/resume.pdf" target="_blank" rel="noreferrer">Download PDF</a>
+    </div>
+
+    <div class="grid two">
+      <article class="card">
+        <h2>Profile</h2>
+        <p>{site.name}</p>
+        <p>{site.role}</p>
+        <p>{site.location}</p>
+      </article>
+      <article class="card">
+        <h2>Contact</h2>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p><a href={site.social.linkedin} target="_blank" rel="noreferrer">linkedin.com/in/carlo-columna</a></p>
+        <p><a href={site.social.medium} target="_blank" rel="noreferrer">medium.com/@carlocolumna</a></p>
+      </article>
+    </div>
+
+    <article class="card">
+      <h2>Summary</h2>
+      <p>{site.summary}</p>
+    </article>
+
+    <article class="card">
+      <h2>Education</h2>
+      <ul>
+        <li>
+          <strong>Advanced Software Development</strong> — Computer Power Plus, 2017–2018
+        </li>
+        <li>
+          <strong>Software Development</strong> — Computer Power Plus, 2016–2018
+        </li>
+        <li>
+          <strong>Bachelor of Engineering (Chemical Engineering)</strong> — University of Santo Tomas, 2007–2011 · <em>Cum Laude</em>
+        </li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h2>Honours &amp; Awards</h2>
+      <ul>
+        <li>Cum Laude</li>
+        <li>Academic Excellence on Science</li>
+        <li>BPI – DOST Science Award</li>
+        <li>Rebisco's Choice Award</li>
+        <li>DOST SEI Merit Scholarship</li>
+      </ul>
+    </article>
+  </section>
+</BaseLayout>

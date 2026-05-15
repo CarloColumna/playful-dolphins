@@ -1,0 +1,83 @@
+---
+import Sidebar from "../components/Sidebar.astro";
+import { site } from "../data/site";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  active?: string;
+}
+
+const { title, description = "Personal website", active } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <script is:inline>
+      // Apply persisted theme before paint to avoid flash.
+      (function () {
+        try {
+          var t = localStorage.getItem("data-theme") || "lofi";
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "lofi");
+        }
+      })();
+    </script>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="drawer">
+      <Sidebar active={active} />
+      <div class="drawer-overlay" id="drawer-overlay"></div>
+
+      <div class="drawer-content">
+        <header class="mobile-header">
+          <a href="/" class="brand">{site.name}</a>
+          <button class="hamburger" id="drawer-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </header>
+
+        <main>
+          <slot />
+        </main>
+      </div>
+    </div>
+
+    <script>
+      const toggle = document.getElementById("drawer-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("drawer-overlay");
+
+      function setOpen(open: boolean) {
+        if (!sidebar || !overlay || !toggle) return;
+        sidebar.classList.toggle("open", open);
+        overlay.classList.toggle("visible", open);
+        toggle.setAttribute("aria-expanded", String(open));
+      }
+
+      toggle?.addEventListener("click", () => {
+        setOpen(!sidebar?.classList.contains("open"));
+      });
+      overlay?.addEventListener("click", () => setOpen(false));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setOpen(false);
+      });
+    </script>
+  </body>
+</html>

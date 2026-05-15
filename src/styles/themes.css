@@ -1,0 +1,224 @@
+/* ──────────────────────────────────────────────────────────────
+   Theme palettes — port of DaisyUI themes via CSS custom properties.
+   Variables consumed:
+     --bg, --bg-elev, --bg-soft, --text, --muted,
+     --brand, --brand-2, --line, --shadow, --bg-grad
+   ────────────────────────────────────────────────────────────── */
+
+/* Default = lofi (clean light) — matches the reference portfolio */
+:root,
+[data-theme="lofi"] {
+  --bg: #ffffff;
+  --bg-elev: #ffffff;
+  --bg-soft: #f2f2f2;
+  --text: #0d0d0d;
+  --muted: #6b7280;
+  --brand: #0d0d0d;
+  --brand-2: #1a1a1a;
+  --line: #e6e6e6;
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  --bg-grad:
+    radial-gradient(circle at 12% 12%, rgba(0, 0, 0, 0.04), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+}
+
+[data-theme="dark"] {
+  --bg: #1d232a;
+  --bg-elev: #191e24;
+  --bg-soft: #2a323c;
+  --text: #a6adba;
+  --muted: #7a8290;
+  --brand: #7c3aed;
+  --brand-2: #d926aa;
+  --line: #2a323c;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --bg-grad:
+    radial-gradient(circle at 10% 15%, rgba(124, 58, 237, 0.18), transparent 30%),
+    radial-gradient(circle at 88% 8%, rgba(217, 38, 170, 0.14), transparent 28%),
+    linear-gradient(180deg, #1d232a 0%, #161b21 100%);
+}
+
+[data-theme="dolphin"] {
+  --bg: #0b1220;
+  --bg-elev: #121a2b;
+  --bg-soft: #1a2438;
+  --text: #e6edf7;
+  --muted: #9eb0cc;
+  --brand: #4dd2ff;
+  --brand-2: #39f3bb;
+  --line: #273550;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+  --bg-grad:
+    radial-gradient(circle at 10% 15%, rgba(77, 210, 255, 0.14), transparent 32%),
+    radial-gradient(circle at 85% 10%, rgba(57, 243, 187, 0.12), transparent 28%),
+    linear-gradient(180deg, #09101d 0%, #0b1220 100%);
+}
+
+[data-theme="cupcake"] {
+  --bg: #faf7f5;
+  --bg-elev: #ffffff;
+  --bg-soft: #efeae6;
+  --text: #291334;
+  --muted: #7c6f80;
+  --brand: #65c3c8;
+  --brand-2: #ef9fbc;
+  --line: #e7e2dd;
+  --shadow: 0 4px 14px rgba(41, 19, 52, 0.08);
+  --bg-grad:
+    radial-gradient(circle at 10% 15%, rgba(101, 195, 200, 0.12), transparent 30%),
+    radial-gradient(circle at 88% 10%, rgba(239, 159, 188, 0.12), transparent 28%),
+    linear-gradient(180deg, #faf7f5 0%, #f5f0eb 100%);
+}
+
+[data-theme="synthwave"] {
+  --bg: #2d1b69;
+  --bg-elev: #241555;
+  --bg-soft: #3d2a82;
+  --text: #f9f7fd;
+  --muted: #b6a3d9;
+  --brand: #e779c1;
+  --brand-2: #58c7f3;
+  --line: #3d2882;
+  --shadow: 0 10px 30px rgba(231, 121, 193, 0.18);
+  --bg-grad:
+    radial-gradient(circle at 10% 15%, rgba(231, 121, 193, 0.22), transparent 32%),
+    radial-gradient(circle at 88% 8%, rgba(88, 199, 243, 0.18), transparent 28%),
+    linear-gradient(180deg, #1f1147 0%, #2d1b69 100%);
+}
+
+[data-theme="retro"] {
+  --bg: #e4d8b4;
+  --bg-elev: #ede0bf;
+  --bg-soft: #d8cca0;
+  --text: #282425;
+  --muted: #5d524f;
+  --brand: #ef9995;
+  --brand-2: #a4cbb4;
+  --line: #c9bb89;
+  --shadow: 0 4px 14px rgba(40, 36, 37, 0.1);
+  --bg-grad:
+    radial-gradient(circle at 12% 12%, rgba(239, 153, 149, 0.18), transparent 30%),
+    linear-gradient(180deg, #e8dcb8 0%, #ddd0a4 100%);
+}
+
+[data-theme="cyberpunk"] {
+  --bg: #ffee00;
+  --bg-elev: #fde047;
+  --bg-soft: #facc15;
+  --text: #000000;
+  --muted: #1f1f1f;
+  --brand: #ff7598;
+  --brand-2: #75d1f0;
+  --line: #d4b412;
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  --bg-grad:
+    radial-gradient(circle at 12% 12%, rgba(255, 117, 152, 0.25), transparent 30%),
+    linear-gradient(180deg, #ffee00 0%, #fde047 100%);
+}
+
+[data-theme="dracula"] {
+  --bg: #282a36;
+  --bg-elev: #1e1f29;
+  --bg-soft: #44475a;
+  --text: #f8f8f2;
+  --muted: #a8a8a0;
+  --brand: #ff79c6;
+  --brand-2: #bd93f9;
+  --line: #44475a;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --bg-grad:
+    radial-gradient(circle at 10% 15%, rgba(255, 121, 198, 0.16), transparent 32%),
+    radial-gradient(circle at 88% 10%, rgba(189, 147, 249, 0.16), transparent 28%),
+    linear-gradient(180deg, #21222c 0%, #282a36 100%);
+}
+
+[data-theme="night"] {
+  --bg: #0f1729;
+  --bg-elev: #1a2238;
+  --bg-soft: #2a3957;
+  --text: #b6c5e6;
+  --muted: #7b8aa8;
+  --brand: #38bdf8;
+  --brand-2: #818cf8;
+  --line: #2a3957;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --bg-grad:
+    radial-gradient(circle at 10% 15%, rgba(56, 189, 248, 0.14), transparent 32%),
+    radial-gradient(circle at 88% 10%, rgba(129, 140, 248, 0.14), transparent 28%),
+    linear-gradient(180deg, #0c1322 0%, #0f1729 100%);
+}
+
+[data-theme="forest"] {
+  --bg: #171212;
+  --bg-elev: #1f1818;
+  --bg-soft: #2a2425;
+  --text: #d3d3d3;
+  --muted: #898989;
+  --brand: #1eb854;
+  --brand-2: #1fd65f;
+  --line: #2a2425;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --bg-grad:
+    radial-gradient(circle at 10% 15%, rgba(30, 184, 84, 0.14), transparent 32%),
+    linear-gradient(180deg, #131010 0%, #171212 100%);
+}
+
+[data-theme="aqua"] {
+  --bg: #345da7;
+  --bg-elev: #2c4f8f;
+  --bg-soft: #4870b7;
+  --text: #ffffff;
+  --muted: #cbd5e1;
+  --brand: #09ecf3;
+  --brand-2: #ffe999;
+  --line: #4870b7;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  --bg-grad:
+    radial-gradient(circle at 12% 12%, rgba(9, 236, 243, 0.2), transparent 32%),
+    linear-gradient(180deg, #2c4f8f 0%, #345da7 100%);
+}
+
+[data-theme="coffee"] {
+  --bg: #20161f;
+  --bg-elev: #2a1e29;
+  --bg-soft: #3a2c39;
+  --text: #d6c5b0;
+  --muted: #8a7866;
+  --brand: #db924b;
+  --brand-2: #c47238;
+  --line: #3a2c39;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --bg-grad:
+    radial-gradient(circle at 12% 12%, rgba(219, 146, 75, 0.16), transparent 32%),
+    linear-gradient(180deg, #1a1219 0%, #20161f 100%);
+}
+
+[data-theme="winter"] {
+  --bg: #ffffff;
+  --bg-elev: #f3f4f6;
+  --bg-soft: #e2e8f0;
+  --text: #394e6a;
+  --muted: #6b7280;
+  --brand: #047aff;
+  --brand-2: #463aa2;
+  --line: #d1d5db;
+  --shadow: 0 4px 14px rgba(57, 78, 106, 0.08);
+  --bg-grad:
+    radial-gradient(circle at 12% 12%, rgba(4, 122, 255, 0.08), transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
+}
+
+[data-theme="valentine"] {
+  --bg: #f0d6e8;
+  --bg-elev: #f7e3ee;
+  --bg-soft: #ebc6dd;
+  --text: #632c3b;
+  --muted: #8d5a6c;
+  --brand: #e96d7b;
+  --brand-2: #a991f7;
+  --line: #e2bcd5;
+  --shadow: 0 4px 14px rgba(99, 44, 59, 0.08);
+  --bg-grad:
+    radial-gradient(circle at 12% 12%, rgba(233, 109, 123, 0.18), transparent 30%),
+    linear-gradient(180deg, #f0d6e8 0%, #ebc6dd 100%);
+}

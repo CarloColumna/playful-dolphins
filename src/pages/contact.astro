@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout active="contact" title="Contact" description="Get in touch">
+  <section class="card container">
+    <h1>Contact</h1>
+    <p>
+      Reach me directly via email, or use the form endpoint once connected in deployment.
+    </p>
+
+    <div>
+      <a class="btn primary" href={`mailto:${site.email}`}>Email Me</a>
+    </div>
+
+    <form
+      class="grid"
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      style="margin-top: 1rem;"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p style="display:none;">
+        <label>
+          Do not fill this out if you are human: <input name="bot-field" />
+        </label>
+      </p>
+      <label>
+        Name
+        <input name="name" required />
+      </label>
+      <label>
+        Email
+        <input name="email" type="email" required />
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="6" required></textarea>
+      </label>
+
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+  </section>
+</BaseLayout>

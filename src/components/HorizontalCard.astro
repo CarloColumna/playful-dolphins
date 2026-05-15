@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  desc?: string;
+  url?: string;
+  badge?: string;
+  tags?: string[];
+  meta?: string;
+  external?: boolean;
+}
+const { title, desc, url, badge, tags = [], meta, external = false } = Astro.props;
+const target = external ? "_blank" : undefined;
+const rel = external ? "noreferrer" : undefined;
+---
+
+<article class="hcard">
+  <div class="hcard-body">
+    <div class="hcard-head">
+      <h3 class="hcard-title">
+        {url ? <a href={url} target={target} rel={rel}>{title}</a> : title}
+        {badge && <span class="badge hcard-badge">{badge}</span>}
+      </h3>
+      {meta && <span class="hcard-meta">{meta}</span>}
+    </div>
+    {desc && <p class="hcard-desc">{desc}</p>}
+    {tags.length > 0 && (
+      <div class="hcard-tags">
+        {tags.map((t) => <span class="badge subtle">{t}</span>)}
+      </div>
+    )}
+  </div>
+</article>
