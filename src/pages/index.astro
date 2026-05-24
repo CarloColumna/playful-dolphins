@@ -28,23 +28,11 @@ const featuredList = featured.length ? featured : projects.slice(0, 3);
     <p class="subtitle">{site.role}</p>
     <p>{site.summary}</p>
     <div class="cta">
-      <a class="btn primary" href="/projects">View Projects</a>
+      <a class="btn primary" href="/blog">View Blogs</a>
       <a class="btn" href="/contact">Let's connect!</a>
       <a class="btn" href={site.social.github} target="_blank" rel="noreferrer">GitHub</a>
     </div>
   </section>
-
-  <h2 class="section-title">Featured projects {`</>`}</h2>
-  {featuredList.map((p) => (
-    <HorizontalCard
-      title={p.data.title}
-      desc={p.data.summary}
-      url={p.data.demo || p.data.repo}
-      external={Boolean(p.data.demo || p.data.repo)}
-      badge={p.data.featured ? "Featured" : undefined}
-      tags={p.data.tech}
-    />
-  ))}
 
   {lastPosts.length > 0 && (
     <>
@@ -61,4 +49,16 @@ const featuredList = featured.length ? featured : projects.slice(0, 3);
       ))}
     </>
   )}
+
+  <h2 class="section-title">Featured projects {`</>`}</h2>
+  {featuredList.map((p) => (
+    <HorizontalCard
+      title={p.data.title}
+      desc={p.data.summary}
+      url={p.data.demo || p.data.repo}
+      external={Boolean(p.data.demo || p.data.repo)}
+      badge={p.data.featured ? "Featured" : undefined}
+      tags={p.data.tech}
+    />
+  ))}
 </BaseLayout>
