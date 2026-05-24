@@ -27,9 +27,22 @@ const featuredList = featured.length ? featured : projects.slice(0, 3);
     <h1>I'm {site.name}</h1>
     <p class="subtitle">{site.role}</p>
     <p>{site.summary}</p>
+    <p>
+      I write about cloud-native technologies, platform engineering, and real-world DevOps on
+      <a href={site.social.medium} target="_blank" rel="noreferrer">Medium</a>.
+      I'm also an <strong>AWS Community Builder</strong>, actively sharing knowledge across
+      the community.
+    </p>
+    <p>
+      Before IT, I spent four and a half years as a brewing engineer at San Miguel Corporation
+      in the Philippines. I hold a Bachelor of Engineering in Chemical Engineering from the
+      University of Santo Tomas, where I graduated Cum Laude.
+    </p>
     <div class="cta">
       <a class="btn primary" href="/blog">View Blogs</a>
       <a class="btn" href="/contact">Let's connect!</a>
+      <a class="btn" href={site.social.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn" href={site.social.medium} target="_blank" rel="noreferrer">Medium</a>
       <a class="btn" href={site.social.github} target="_blank" rel="noreferrer">GitHub</a>
     </div>
   </section>
