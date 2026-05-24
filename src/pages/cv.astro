@@ -1,9 +1,46 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../data/site";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const experience: CollectionEntry<"experience">[] = (await getCollection("experience")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const certs: CollectionEntry<"certifications">[] = (
+  await getCollection("certifications")
+).sort((a, b) => a.data.order - b.data.order);
+
+const skillGroups = [
+  {
+    title: "Container & Platform",
+    items: ["Kubernetes", "Docker", "Helm", "Terraform", "GitOps"],
+  },
+  {
+    title: "Cloud & Infrastructure",
+    items: ["Amazon Web Services (AWS)", "Azure", "ARM Templates", "PowerShell"],
+  },
+  {
+    title: "Languages",
+    items: ["Python", "Go", "Kotlin", "JavaScript", "TypeScript", "HTML", "CSS"],
+  },
+  {
+    title: "Observability",
+    items: ["Grafana", "New Relic", "Sumologic", "Prometheus", "StatsD", "FluentD"],
+  },
+  {
+    title: "CI/CD & Tooling",
+    items: ["TeamCity", "Jenkins", "Git", "Agile/Scrum"],
+  },
+  {
+    title: "Frontend",
+    items: ["React", "TypeScript", "Progressive Web Apps"],
+  },
+];
 ---
 
-<BaseLayout active="cv" title="CV" description="Curriculum vitae">
+<BaseLayout active="cv" title="CV" description="Curriculum vitae — experience, skills, and certifications">
   <section class="card container">
     <div class="section-header">
       <h1>Curriculum Vitae</h1>
@@ -29,9 +66,63 @@ import { site } from "../data/site";
       <h2>Summary</h2>
       <p>{site.summary}</p>
     </article>
+  </section>
 
+  <!-- Experience -->
+  <h2 class="section-title">Experience</h2>
+  <section class="card container">
+    <div class="grid">
+      {experience.map((item) => (
+        <article class="card">
+          <div class="section-header">
+            <h2>{item.data.role}</h2>
+            <span class="badge">{item.data.start} - {item.data.end}</span>
+          </div>
+          <p>{item.data.company} · {item.data.location}</p>
+          <ul>
+            {(item.data.highlights as string[]).map((point) => <li>{point}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <h2 class="section-title">Skills</h2>
+  <section class="card container">
+    <div class="grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
+      {skillGroups.map((group) => (
+        <article class="card">
+          <h2>{group.title}</h2>
+          <ul>
+            {group.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <h2 class="section-title">Certifications</h2>
+  <section class="card container">
+    <div class="grid">
+      {certs.map((cert) => (
+        <article class="card">
+          <h2>{cert.data.title}</h2>
+          <p>{cert.data.issuer} · Issued {cert.data.issued}</p>
+          {cert.data.credentialId && <p><strong>Credential ID:</strong> {cert.data.credentialId}</p>}
+          {cert.data.verifyUrl && (
+            <a class="btn" href={cert.data.verifyUrl} target="_blank" rel="noreferrer">Verify</a>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Education -->
+  <h2 class="section-title">Education</h2>
+  <section class="card container">
     <article class="card">
-      <h2>Education</h2>
       <ul>
         <li>
           <strong>Advanced Software Development</strong> — Computer Power Plus, 2017–2018
@@ -44,9 +135,12 @@ import { site } from "../data/site";
         </li>
       </ul>
     </article>
+  </section>
 
+  <!-- Honours -->
+  <h2 class="section-title">Honours & Awards</h2>
+  <section class="card container">
     <article class="card">
-      <h2>Honours &amp; Awards</h2>
       <ul>
         <li>Cum Laude</li>
         <li>Academic Excellence on Science</li>
